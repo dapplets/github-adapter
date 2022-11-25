@@ -1,0 +1,27 @@
+{
+  "name": {
+    "$ref": "package.json#/name"
+  },
+  "branch": "default",
+  "version": {
+    "$ref": "package.json#/version"
+  },
+  "type": "ADAPTER",
+  "title": "GitHub Adapter",
+  "description": {
+    "$ref": "package.json#/description"
+  },
+  "main": {
+    "$ref": "package.json#/main"
+  },
+  "contextIds": [
+    "github.com",
+    "www.github.com"
+  ],
+  "dependencies": {
+    "dynamic-adapter.dapplet-base.eth": "0.6.22"
+  },
+  "interfaces": {
+    "ca-virtual-adapter.dapplet-base.eth": "0.1.0"
+  }
+}
