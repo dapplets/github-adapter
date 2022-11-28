@@ -5,6 +5,39 @@ export const styles = css`
     z-index: 50200;
   }
 
+  .dapplets-connected-accounts-wrapper {
+    position: absolute;
+    z-index: 99999;
+    left: calc(((100% - 1216px) / 2) - 8px);
+    top: 326px;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+
+  @media (max-width: 1295px) {
+    .dapplets-connected-accounts-wrapper {
+      left: 24px;
+    }
+  }
+
+  @media (max-width: 1011px) {
+    .dapplets-connected-accounts-wrapper {
+      left: 16px;
+      top: 288px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .dapplets-connected-accounts-wrapper {
+      top: 17vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .dapplets-connected-accounts-wrapper {
+      top: 78px;
+    }
+  }
+
   .dapplets-connected-accounts-wrapper .accounts {
     position: absolute;
     display: flex;

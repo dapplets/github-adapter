@@ -29,8 +29,11 @@ class AvatarBadge extends LitElement implements IAvatarBadgeState {
   @property() hidden: boolean
   @property() tooltip?: string | string[]
   @property() theme?: 'DARK' | 'LIGHT'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @property() exec?: (ctx: any, me: IAvatarBadgeState) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @property() init?: (tx: any, me: IAvatarBadgeState) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @property() ctx: any
   @property() username: string
   @property() accounts?: IConnectedAccountUser[]
@@ -51,9 +54,7 @@ class AvatarBadge extends LitElement implements IAvatarBadgeState {
 
     if (this.accounts && this.username) {
       const handleCloseAccounts = () => {
-        console.log('click handleCloseAccounts')
         this.state.showAccounts = false
-        console.log('this.state.showAccounts', this.state.showAccounts)
       }
 
       if (!this._accountsWidget) {

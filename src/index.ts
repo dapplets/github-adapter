@@ -1,6 +1,6 @@
 import { IFeature } from '@dapplets/dapplet-extension'
-import { Button } from './button'
 import { AvatarBadge } from './avatar-badge'
+import { Button } from './button'
 
 type ContextBuilder = {
   [propName: string]: string
@@ -73,7 +73,7 @@ export default class GitHubAdapter {
 
   public getCurrentUser() {
     const profileNode = document.querySelector('.js-profile-editable-replace')
-    if (!!profileNode) {
+    if (profileNode) {
       return {
         username: profileNode.querySelector('.vcard-username').textContent.trim(),
         fullname: profileNode.querySelector('.vcard-fullname').textContent.trim(),
