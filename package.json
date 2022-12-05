@@ -1,6 +1,6 @@
 {
   "name": "github-adapter.dapplet-base.eth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Site specific adapter for GitHub",
   "author": "Dapplets Project",
   "homepage": "https://dapplets.org",

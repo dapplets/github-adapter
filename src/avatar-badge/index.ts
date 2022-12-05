@@ -63,14 +63,20 @@ class AvatarBadge extends LitElement implements IAvatarBadgeState {
           'main > div:nth-child(2) > div > div > div > div:nth-child(2)'
         )
         elementToInsertWidget.append(this._accountsWidget)
-        window.addEventListener('popstate', () => handleCloseAccounts())
+        window.addEventListener('popstate', handleCloseAccounts)
+        window.addEventListener('click', (e) => {
+          if (e.target === this._accountsWidget) {
+            setTimeout(() => {
+              handleCloseAccounts()
+            }, 400)
+          } else {
+            handleCloseAccounts()
+          }
+        })
       }
       this._accountsWidget.username = this.username
       this._accountsWidget.accounts = this.accounts
       this._accountsWidget.showAccounts = this.showAccounts
-      this._accountsWidget.el = this.ctx.el
-      this._accountsWidget.insPointName = this.insPointName
-      this._accountsWidget.handleClose = handleCloseAccounts
     }
 
     return html`<div
