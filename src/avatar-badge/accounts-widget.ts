@@ -21,11 +21,6 @@ export class AccountsWidget extends LitElement implements IAccountsWidgetState {
   @property() accounts: IConnectedAccountUser[]
   @property() showAccounts: boolean
 
-  private _clickAccountHandler = (account: IConnectedAccountUser) => (e) => {
-    e.preventDefault()
-    window.open(resources[account.origin].uri(account.name), '_blank')
-  }
-
   private _clickCopyHandler = (account: IConnectedAccountUser) => (e: PointerEvent) => {
     e.preventDefault()
     const image = <HTMLImageElement>e.target
@@ -48,17 +43,18 @@ export class AccountsWidget extends LitElement implements IAccountsWidgetState {
         ${this.accounts.map(
           (account) =>
             html`<div class="account-container">
-              <div
+              <a
                 class=${classMap({ account: true, nameUserActive: account.accountActive })}
                 title=${'Go to the ' + resources[account.origin].pageName}
-                @click=${this._clickAccountHandler(account)}
+                href=${resources[account.origin].uri(account.name)}
+                target=${'_blank'}
               >
                 <img src=${resources[account.origin].icon} class="imgUser" />
-                <h4 class="nameUser">${account.name}</h4>
-              </div>
-              <a class="copy-button" title="copy ID" @click=${this._clickCopyHandler(account)}>
-                <img src=${COPY} class="copy-icon" alt="copy button" />
+                ${account.name}
               </a>
+              <button class="copy-button" title="copy ID" @click=${this._clickCopyHandler(account)}>
+                <img src=${COPY} class="copy-icon" alt="copy button" />
+              </button>
             </div>`
         )}
       </div>

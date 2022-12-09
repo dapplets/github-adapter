@@ -80,50 +80,41 @@ class AvatarBadge extends LitElement implements IAvatarBadgeState {
     }
 
     return html`<div
-      class="avatar-badge"
-      @click=${this._clickHandler}
       title=${this.tooltip
         ? typeof this.tooltip === 'string'
           ? this.tooltip
           : this.tooltip.join('\n')
         : ''}
+      class=${classMap({
+        'avatar-badge': true,
+        clickable: !!this.exec,
+        'post-badge': this.insPointName === 'POST',
+        'profile-badge': this.insPointName === 'PROFILE',
+        'not-basic': !this.basic,
+        dark: this.theme === 'DARK',
+      })}
+      style=${styleMap({
+        top: this.vertical === 'top' ? (this.insPointName === 'POST' ? '-2px' : '6%') : undefined,
+        bottom:
+          this.vertical === 'bottom' ? (this.insPointName === 'POST' ? '-2px' : '6%') : undefined,
+        left:
+          this.horizontal === 'left' ? (this.insPointName === 'POST' ? '-7px' : '2%') : undefined,
+        right:
+          this.horizontal === 'right' ? (this.insPointName === 'POST' ? '-7px' : '2%') : undefined,
+      })}
+      @click=${this._clickHandler}
     >
-      <div
-        class=${classMap({
-          wrapper: true,
-          active: !!this.exec,
-          'post-badge': this.insPointName === 'POST',
-          'profile-badge': this.insPointName === 'PROFILE',
-          'not-basic': !this.basic,
-          dark: this.theme === 'DARK',
-        })}
-        style=${styleMap({
-          top: this.vertical === 'top' ? (this.insPointName === 'POST' ? '-2px' : '6%') : undefined,
-          bottom:
-            this.vertical === 'bottom' ? (this.insPointName === 'POST' ? '-2px' : '6%') : undefined,
-          left:
-            this.horizontal === 'left' ? (this.insPointName === 'POST' ? '-7px' : '2%') : undefined,
-          right:
-            this.horizontal === 'right'
-              ? this.insPointName === 'POST'
-                ? '-7px'
-                : '2%'
-              : undefined,
-        })}
-      >
-        ${this.img &&
-        (this.mediaType === undefined || this.mediaType !== 'application/octet-stream')
-          ? html`<img src=${this.img} style=${styleMap({ width: '100%' })} />`
-          : this.video ?? (this.img && this.mediaType === 'application/octet-stream')
-          ? html`<video
-              src=${this.video ?? this.img}
-              autoplay
-              muted
-              loop
-              style=${styleMap({ width: '100%' })}
-            />`
-          : ''}
-      </div>
+      ${this.img && (this.mediaType === undefined || this.mediaType !== 'application/octet-stream')
+        ? html`<img src=${this.img} style=${styleMap({ width: '100%' })} />`
+        : this.video ?? (this.img && this.mediaType === 'application/octet-stream')
+        ? html`<video
+            src=${this.video ?? this.img}
+            autoplay
+            muted
+            loop
+            style=${styleMap({ width: '100%' })}
+          />`
+        : ''}
     </div>`
   }
 }

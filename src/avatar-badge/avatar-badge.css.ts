@@ -6,17 +6,13 @@ export const styles = css`
   }
 
   .avatar-badge {
-    display: block;
-  }
-
-  .wrapper {
     position: absolute;
     display: flex;
     overflow: hidden;
     align-items: center;
   }
 
-  .active {
+  .clickable {
     cursor: pointer;
   }
 

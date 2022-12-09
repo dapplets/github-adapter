@@ -65,11 +65,19 @@ export const styles = css`
     width: fit-content;
     height: 40px;
     margin: 5px;
-    padding: 2px 5px 2px 2px;
+    padding: 2px 14px 2px 2px;
 
     border-radius: 200px;
     background-color: #eaf0f0;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    text-decoration: none;
+    color: #2a2a2a;
+
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 100%;
 
     cursor: pointer;
   }
@@ -95,19 +103,9 @@ export const styles = css`
     filter: drop-shadow(0 2px 2px rgb(0 0 0 / 10%));
   }
 
-  .dapplets-connected-accounts-wrapper .nameUser {
-    color: #2a2a2a;
-
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 100%;
-    padding-right: 14px;
-  }
-
   .dapplets-connected-accounts-wrapper .nameUserActive {
     background: #d9304f;
+    color: #fff;
   }
 
   .dapplets-connected-accounts-wrapper .nameUserActive:hover {
@@ -116,10 +114,6 @@ export const styles = css`
 
   .dapplets-connected-accounts-wrapper .nameUserActive:active {
     background-color: #bc2b45;
-  }
-
-  .dapplets-connected-accounts-wrapper .nameUserActive .nameUser {
-    color: #fff;
   }
 
   .dapplets-connected-accounts-wrapper .copy-button {
@@ -134,6 +128,7 @@ export const styles = css`
     border: none;
     border-radius: 9em;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    align-items: center;
   }
 
   .dapplets-connected-accounts-wrapper .copy-button:hover {
