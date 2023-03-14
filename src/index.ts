@@ -48,9 +48,9 @@ export default class GitHubAdapter {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       contextBuilder: (el: any): ContextBuilder => ({
         el,
-        id: el.querySelector('.vcard-username').textContent.trim(),
+        id: el.querySelector('.vcard-username').textContent?.trim().split('\n')?.[0],
         authorFullname: el.querySelector('.vcard-fullname').textContent.trim(),
-        authorUsername: el.querySelector('.vcard-username').textContent.trim(),
+        authorUsername: el.querySelector('.vcard-username').textContent?.trim().split('\n')?.[0],
         authorImg: el.querySelector('.avatar').getAttribute('src'),
       }),
     },
