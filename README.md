@@ -1,4 +1,6 @@
-# Adapter
+<img width="1245" alt="github-adapter" src="https://user-images.githubusercontent.com/43613968/225047473-48d7c668-5ed1-4776-bfed-41aa81047afb.png">
+
+# GitHub Adapter
 
 This project was bootstrapped with [Create Dapplet App](https://github.com/dapplets/create-dapplet-app)
 
