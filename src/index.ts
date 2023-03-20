@@ -72,24 +72,26 @@ export default class GitHubAdapter {
   }
 
   public getCurrentUser() {
-    const profileNode = document.querySelector('.js-profile-editable-replace')
-    if (profileNode) {
+    const headerProfileNode = document.querySelector(
+      'body div.position-relative.js-header-wrapper > header > div.Header-item.mr-0 > details > summary > img'
+    )
+    if (!headerProfileNode)
       return {
-        username: profileNode.querySelector('.vcard-username').textContent.trim(),
-        fullname: profileNode.querySelector('.vcard-fullname').textContent.trim(),
-        img: profileNode.querySelector('.avatar').getAttribute('src'),
         websiteName: 'GitHub',
       }
-    }
-    const headerProfileNode = document.querySelector(
-      'body > div.position-relative.js-header-wrapper > header > div.Header-item.mr-0 > details > summary > img'
-    )
-    if (!headerProfileNode) return null
-    return {
+    const currentUser = {
       username: headerProfileNode.getAttribute('alt').slice(1),
-      fullname: null,
       img: headerProfileNode.getAttribute('src'),
       websiteName: 'GitHub',
     }
+    const profileNode = document.querySelector('.js-profile-editable-replace')
+    if (profileNode) {
+      const id = profileNode.querySelector('.vcard-username').textContent?.trim().split('\n')?.[0]
+      if (id === currentUser.username) {
+        currentUser.img = profileNode.querySelector('.avatar').getAttribute('src')
+        currentUser['fullname'] = profileNode.querySelector('.vcard-fullname').textContent.trim()
+      }
+    }
+    return currentUser
   }
 }
